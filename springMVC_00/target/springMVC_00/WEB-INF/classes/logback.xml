@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding="UTF-8" ?>
+<configuration debug="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS}[%thread] %-5level %logger{36}- %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- name值可以是包名或具体的类名：该包（包括子包）下的类或该类将采用此logger -->
+   <logger name="com.csz.controller" level="INFO">
+       <appender-ref ref="STDOUT"/>
+   </logger>
+
+    <!--root默认的level为debug-->
+    <root level="debug">
+          <appender-ref  ref="STDOUT"/>
+    </root>
+</configuration>

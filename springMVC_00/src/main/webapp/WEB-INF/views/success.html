@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://java.sun.com/jsf/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>用户表</title>
+</head>
+<table border="4">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>地址</th>
+        <th>登录名</th>
+        <th>密码</th>
+        <th>创建时间</th>
+    </tr>
+    </thead>
+    <tbody class="table_node">       
+    <tr class="tr_node">
+        <!--动态载入数据-->
+    </tr>
+    <!-- more data -->          
+    </tbody>
+</table>
+<form method="post" action="/user/addUser" name="userinfo">
+    <label>序号</label><input name="id" type="text"></input>
+    <label>姓名</label><input name="name" type="text"></input>
+    <label>地址</label><input name="address" type="text"></input>
+    <label>创建时间</label><input name="use_date" type="datetime-local"></input>
+    <label>用户名</label><input name="username" type="text"></input>
+    <label>密码</label><input name="password" type="text"></input>
+    <button onclick="add()" name="add">添加</button>
+</form>
+<script>
+    function add() {
+        var f = document.userinfo;
+        var id = f.id.value;
+        var name = f.name.value;
+        var address = f.address.value;
+        var use_date = f.use_date.value;
+        var username = f.username.value;
+        var password = f.password.value;
+
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var obj = eval('(' + xmlhttp.responseText + ')');
+                // alert('姓名:'+obj.uname+'学校:'+obj.uschool+'个人简介:'+obj.uinfo);
+            }
+        }
+        xmlhttp.open("post", "/user/updateUser", true);
+        /*
+        发送post请求时此句万万不能少
+        在Form元素的语法中，EncType表明提交数据的格式
+        用 Enctype 属性指定将数据回发到服务器时浏览器使用的编码类型。
+        application/x-www-form-urlencoded：窗体数据被编码为名称/值对。这是标准的编码格式。
+        multipart/form-data：窗体数据被编码为一条消息，页上的每个控件对应消息中的一个部分。
+        text/plain：窗体数据以纯文本形式进行编码，其中不含任何控件或格式字符
+        */
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send('id=' + id + '&name=' + name + '&address=' + address + '&use_date=' + use_date +
+            '&username=' + username + '&password=' + password);
+    }
+
+</script>
+<p></p>
+<form method="post" action="/user/updateUser" name="userupdate">
+    <select name="id" style="width:100px;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+
+    </select>
+    <label>姓名</label><input name="name" type="text"></input>
+    <label>地址</label><input name="address" type="text"></input>
+    <label>创建时间</label><input name="use_date" type="datetime-local"></input>
+    <label>用户名</label><input name="username" type="text"></input>
+    <label>密码</label><input name="password" type="text"></input>
+    <button name="update" onclick="update()">修改</button>
+</form>
+<script>
+    function update() {
+        var f = document.userupdate;
+        var id = f.id.value;
+        var name = f.name.value;
+        var address = f.address.value;
+        var username = f.username.value;
+        var password = f.password.value;
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var obj = eval('(' + xmlhttp.responseText + ')');
+            }
+        }
+        xmlhttp.open("post", "/user/updateUser", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send('id=' + id + '&name=' + name + '&address=' + address + '&use_date=' +
+            '&username=' + username + '&password=' + password);
+    }
+</script>
+<p></p>
+<form method="POST" action="/user/deleteUserById" name="userdelete">
+    <label>序号</label>
+    <input name="id" type="text"></input>
+    <button name="deletebtn" onclick="deleted()">删除</button>
+</form>
+
+<script>
+    function deleted() {
+        var f = document.userdelete;
+        var id = f.id.value;
+        var xmlhttp
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var obj = eval('(' + xmlhttp.responseText + ')');
+            }
+        }
+        xmlhttp.open("post", "/user/deleteUserById", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send('id=' + id );
+    }
+</script>
+<script src="/js/load_data.js"></script>
+</body>
+</html>

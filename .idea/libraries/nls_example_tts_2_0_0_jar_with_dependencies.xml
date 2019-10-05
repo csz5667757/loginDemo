@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="nls-example-tts-2.0.0-jar-with-dependencies">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../dist/nls-example-tts/target/nls-example-tts-2.0.0-jar-with-dependencies.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="jar://$PROJECT_DIR$/../dist/nls-example-tts/target/nls-example-tts-2.0.0-jar-with-dependencies.jar!/" />
+    </excluded>
+  </library>
+</component>

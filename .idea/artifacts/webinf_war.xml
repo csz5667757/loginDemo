@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webinf:war">
+    <output-path>$PROJECT_DIR$/webinf/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>webinf</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="webinf-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webinf:war exploded" />
+    </root>
+  </artifact>
+</component>
