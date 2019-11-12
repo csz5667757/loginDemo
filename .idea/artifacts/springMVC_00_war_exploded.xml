@@ -41,9 +41,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.5.RELEASE" />
-          <element id="library" level="project" name="Maven: com.aliyun:aliyun-java-sdk-core:3.7.1" />
-          <element id="library" level="project" name="Maven: org.json:json:20170516" />
-          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.49" />
         </element>
       </element>
       <element id="directory" name="META-INF">

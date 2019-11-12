@@ -84,7 +84,7 @@
 <!--    </servlet-mapping>-->
 
     <welcome-file-list>
-        <welcome-file>/indexs.html</welcome-file>
+        <welcome-file>/WEB-INF/views/denglu.html</welcome-file>
     </welcome-file-list>
 
 </web-app>

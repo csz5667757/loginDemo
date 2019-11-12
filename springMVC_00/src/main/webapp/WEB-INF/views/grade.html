@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>成绩表</title>
 </head>
 <body>
-$END$
+<table border="4">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>学科</th>
+        <th>成绩</th>
+    </tr>
+    </thead>
+    <tbody class="table_node">       
+    <tr class="tr_node">
+    </tr>
+    </tbody>
+</table>
+<button onclick="top3()">查询各科前三名</button>
+<button onclick="allgrade()">查询全部成绩</button>
+
 </body>
 </html>
+
+<script>
+    function top3(){
+        $.ajax({
+            type: 'GET',
+            url: "/topThreegrade",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                $('.table_node').empty()
+                //取出后端传过来的list值
+                console.log(data);
+                var chargeRuleLogs = data;
+                //对list值进行便利
+                $.each(chargeRuleLogs, function (index, n) {
+                    var rowTr = document.createElement('tr')
+                    //找到html的tr节点
+                    rowTr.className = "tr_node"
+                    var child = "<td>" + chargeRuleLogs[index].id + "</td>"
+                        + "<td>" + chargeRuleLogs[index].name + "</td>"
+                        + "<td>" + chargeRuleLogs[index].subject + "</td>"
+                        + "<td>" + chargeRuleLogs[index].grade + "</td>"
+
+                    //将要展示的信息写入页面
+                    rowTr.innerHTML = child
+                    //将信息追加
+                    $(".table_node").append(rowTr)
+                });
+            }
+        });
+    }
+
+    function allgrade(){
+        $.ajax({
+            type: 'GET',
+            url: "/grade",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                $('.table_node').empty()
+                //取出后端传过来的list值
+                console.log(data);
+                var chargeRuleLogs = data;
+                //对list值进行便利
+                $.each(chargeRuleLogs, function (index, n) {
+                    var rowTr = document.createElement('tr')
+                    //找到html的tr节点
+                    rowTr.className = "tr_node"
+                    var child = "<td>" + chargeRuleLogs[index].id + "</td>"
+                        + "<td>" + chargeRuleLogs[index].name + "</td>"
+                        + "<td>" + chargeRuleLogs[index].subject + "</td>"
+                        + "<td>" + chargeRuleLogs[index].grade + "</td>"
+                    //将要展示的信息写入页面
+                    rowTr.innerHTML = child
+                    //将信息追加
+                    $(".table_node").append(rowTr)
+                });
+            }
+        });
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/js/load_grade.js"></script>

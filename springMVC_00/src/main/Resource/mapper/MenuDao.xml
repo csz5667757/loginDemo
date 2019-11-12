@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csz.dao.MenuDao">
+
+    <select id="SelectAllMenu" resultType="Menu">
+        SELECT * FROM sys_menu order by menu_type ASC
+    </select>
+
+    <select id="SelectSonMenu" resultType="Menu">
+        select * from  (SELECT  b.* from sys_menu a left join sys_menu b on b.pid = a.id)c where c.id is not null
+    </select>
+
+    <insert id="AddMenu" parameterType="Menu">
+        insert into sys_menu (menu_name,menu_type,pid,url) value (#{menu_name},#{menu_type},#{pid},#{url})
+    </insert>
+
+    <delete id="deleteMenuById" parameterType="Integer">
+        delete from sys_menu where id =#{id}
+    </delete>
+
+    <update id="UpdateMenuById" parameterType="Menu">
+        update  sys_menu set menu_name=#{menu_name},menu_type=#{menu_type},url=#{url},pid=#{pid} where id=#{id}
+    </update>
+</mapper>

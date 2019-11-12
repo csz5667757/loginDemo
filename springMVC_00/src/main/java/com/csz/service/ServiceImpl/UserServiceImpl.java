@@ -1,7 +1,8 @@
-package com.csz.service;
+package com.csz.service.ServiceImpl;
 
 import com.csz.dao.UserDao;
 import com.csz.model.User;
+import com.csz.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

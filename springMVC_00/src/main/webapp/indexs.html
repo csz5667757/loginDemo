@@ -23,7 +23,15 @@
 
 <button type="button" onclick="selectUser()">onclick test</button>
 
-<form action="user/denglu" method="post">
+<p>登录用户表</p>
+<form action="/user/dengluUser" method="post">
+    用户名：<input type="text" name="username" required="required">
+    密码：<input type="text" name="password" required="required">
+    <input type="submit" value="提交">
+</form>
+
+<p>登录查询表</p>
+<form action="user/dengluGrade" method="post">
     用户名：<input type="text" name="username" required="required">
     密码：<input type="text" name="password" required="required">
     <input type="submit" value="提交">

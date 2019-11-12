@@ -1,7 +1,5 @@
 window.onload = function () {
-
     $.ajax({
-
         type: 'GET',
         url: "/user/selectAll",
         contentType: "application/json;cherset=utf-8",

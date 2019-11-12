@@ -25,7 +25,6 @@
         }
         xmlhttp.open("POST", "user/selectAll", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send("id=1");
     }
 </script>
 <body>

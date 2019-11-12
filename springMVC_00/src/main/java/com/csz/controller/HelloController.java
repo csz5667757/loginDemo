@@ -8,6 +8,11 @@ public class HelloController {
     @RequestMapping("hello")
     public String hello(){
         System.out.println("hello=================");
-        return "/WEB-INF/indexs.html";
+        return "indexs.html";
+    }
+
+    @RequestMapping("web")
+    public String web(){
+        return "web";
     }
 }

@@ -15,7 +15,7 @@
     </select>
 
     <insert id="addUser" parameterType="User">
-        insert into user(id,name,address,use_date,username,password) value  (#{id}, #{name}, #{address},#{use_date},#{username},#{password})
+        insert into user(name,address,use_date,username,password) value  ( #{name}, #{address},#{use_date},#{username},#{password})
     </insert>
 
     <update id="updateUserById" parameterType="User">
