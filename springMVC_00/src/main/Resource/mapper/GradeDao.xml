@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csz.dao.GradeDao">
+    <select id="SelectGrade" resultType="Grade">
+        SELECT * FROM student_grade
+    </select>
+
+    <select id="SelectTop3" resultType="Grade">
+        select a.* from student_grade a LEFT JOIN student_grade b on a.`subject` = b.`subject` and a.grade &lt; b.grade  group by a.`subject`,a.`name`
+        HAVING count(b.id) &lt; 3 ORDER BY  a.`subject`,a.grade DESC
+    </select>
+
+    <select id="SelectTopN" resultType="Grade" parameterType="INTEGER">
+         select a.* from student_grade a LEFT JOIN student_grade b on a.`subject` = b.`subject` and a.grade &lt; b.grade  group by a.`subject`,a.`name`
+        HAVING count(b.id) &lt; #{top} ORDER BY  a.`subject`,a.grade DESC
+    </select>
+
+</mapper>
